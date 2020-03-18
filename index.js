@@ -23,6 +23,7 @@ hexo.extend.filter.register('after_post_render', function(data){
     else {
       var endPos = link.length-1;
     }
+    
     link = link.substring(beginPos, endPos) + '/' + appendLink;
 
     var toprocess = ['excerpt', 'more', 'content'];
@@ -55,8 +56,8 @@ hexo.extend.filter.register('after_post_render', function(data){
             srcArray.shift();
             src = srcArray.join('/');
 
-            $(this).attr('src', link + src);
-            console.info&&console.info("update link as:-->"+config.root + link + src);
+            const newLink = config.url+'/'+link + src;
+            $(this).attr('src', newLink);
           }
         }else{
           console.info&&console.info("no src attr, skipped...");
